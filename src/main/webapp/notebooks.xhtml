@@ -4,10 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
      <h:outputLabel value="Notebooks"/>
-     <h:commandButton value="Create"/>
+     <h:commandButton value="Create" type="button" onclick="PF('dlg2').show();"/>
      <h:form>
           <h:dataTable> <!--Go trough each notebook-->
                <h:column>
@@ -22,6 +23,10 @@
                     </div>
                </h:column>
           </h:dataTable>
+
+          <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+               <h:outputText value="This is a Modal Dialog." />
+          </p:dialog>
      </h:form>
 </f:view>
 </html>
