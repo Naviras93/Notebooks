@@ -12,5 +12,3 @@ Go back to the command window and put in:
 >create-jdbc-resource --connectionpoolid jpa_notebooksdb_postgresql_pool jdbc/notebooksdb
 
 If all of those above steps were completed then they don't need to be done again.
-
-Example data for the database will be generated when the application runs.
