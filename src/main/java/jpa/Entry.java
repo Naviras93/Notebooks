@@ -11,7 +11,6 @@ public class Entry {
     private String description;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "id")
     private Chapter chapter;
 
     @ManyToMany

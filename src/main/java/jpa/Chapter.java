@@ -10,7 +10,6 @@ public class Chapter {
     private String name;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "id")
     private Notebook notebook;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "chapter")
