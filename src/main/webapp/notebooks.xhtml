@@ -9,10 +9,10 @@
      <h:body>
           <h:form>
           <h:outputLabel value="Notebooks"/>
-               <h:commandButton class="createButton" value="Create" />
+               <h:commandButton class="createButton" value="Open create box" />
                <div class="createBlock">
                     <h:inputText value="#{notebookBean.createNotebookName}"/>
-                    <h:commandButton action="#{notebookBean.createNotebook()}"/>
+                    <h:commandButton action="#{notebookBean.createNotebook()}" value="Save"/>
                </div>
                <h:dataTable value="#{notebookBean.notebooks}" var="notebook"> <!--Go trough each notebook-->
                     <h:column>

@@ -28,7 +28,7 @@ public class NotebookBean {
     }
 
     public List<Notebook> getNotebooks() {
-        return notebooks;
+        return notebooks = notebookService.getNotebooks();
     }
 
     public void setNotebooks(List<Notebook> notebooks) {

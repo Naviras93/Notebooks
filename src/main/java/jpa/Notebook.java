@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name="GetAllNotebooks", query="SELECT n FROM Notebook n")
+})
 public class Notebook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

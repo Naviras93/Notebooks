@@ -29,6 +29,6 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public List<Notebook> getNotebooks() {
-        return null;
+        return em.createNamedQuery("GetAllNotebooks").getResultList();
     }
 }
