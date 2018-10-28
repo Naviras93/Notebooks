@@ -14,6 +14,7 @@ import java.util.List;
 @SessionScoped
 public class NotebookBean {
     private String createNotebookName;
+    private String editNotebookName;
     private List<Notebook> notebooks;
     private List<Chapter> chapters;
     private Notebook selectedNotebook;
@@ -27,6 +28,11 @@ public class NotebookBean {
         notebookService.createNotebook(nb);
     }
 
+    public String openEditNotebook(Notebook notebook){
+        this.selectedNotebook = notebook;
+        return "editnotebook.xhtml";
+    }
+
     public List<Notebook> getNotebooks() {
         return notebooks = notebookService.getNotebooks();
     }
@@ -35,12 +41,14 @@ public class NotebookBean {
         this.notebooks = notebooks;
     }
 
-    public void updateNotebook() {
-        selectedNotebook = new Notebook();
+    public String updateNotebook(Long id,String newName) {
+        notebookService.updateNotebook(id, newName);
+        return "notebooks.xhtml";
     }
 
-    public void deleteNotebook() {
-        notebooks.remove(selectedNotebook);
+    public String deleteNotebook(Long id) {
+        notebookService.deleteNotebook(id);
+        return "notebooks.xhtml";
     }
 
     public List<Chapter> getChapters() {
@@ -57,5 +65,13 @@ public class NotebookBean {
 
     public void setCreateNotebookName(String createNotebookName) {
         this.createNotebookName = createNotebookName;
+    }
+
+    public Notebook getSelectedNotebook() {
+        return selectedNotebook;
+    }
+
+    public void setSelectedNotebook(Notebook selectedNotebook) {
+        this.selectedNotebook = selectedNotebook;
     }
 }

@@ -18,13 +18,16 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public void updateNotebook(Notebook notebook) {
-
+    public void updateNotebook(Long id, String newName) {
+        Notebook notebook = em.find(Notebook.class, id);
+        notebook.setName(newName);
+        em.merge(notebook);
+        em.flush();
     }
 
     @Override
-    public void deleteNotebook(Notebook notebook) {
-
+    public void deleteNotebook(Long id) {
+        em.remove(em.find(Notebook.class, id));
     }
 
     @Override

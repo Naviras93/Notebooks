@@ -8,7 +8,7 @@ import java.util.List;
 @Local
 public interface NotebookService {
     void createNotebook(Notebook notebook);
-    void updateNotebook(Notebook notebook);
-    void deleteNotebook(Notebook notebook);
+    void updateNotebook(Long id, String newName);
+    void deleteNotebook(Long id);
     List<Notebook> getNotebooks();
 }

@@ -26,6 +26,10 @@ public class Notebook {
         this.chapters = chapters;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

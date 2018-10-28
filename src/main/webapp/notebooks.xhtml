@@ -9,7 +9,7 @@
      <h:body>
           <h:form>
           <h:outputLabel value="Notebooks"/>
-               <h:commandButton class="createButton" value="Open create box" />
+               <h:commandButton class="createButton" value="Add a new notebook" />
                <div class="createBlock">
                     <h:inputText value="#{notebookBean.createNotebookName}"/>
                     <h:commandButton action="#{notebookBean.createNotebook()}" value="Save"/>
@@ -18,12 +18,7 @@
                     <h:column>
                          <div>
                               <h:outputLabel value="#{notebook.name}" var="name"/> <!--Write each notebook title-->
-                              <h:commandButton class="editButton" value="Edit" />
-                              <div class="editBlock">
-                                   <h:inputText var="noteBookName"/>
-                                   <h:commandButton action="#{notebookBean.updateNotebook()}"/>
-                                   <h:commandButton action="#{notebookBean.deleteNotebook()}"/>
-                              </div>
+                              <h:commandButton class="editButton" value="Edit" action="#{notebookBean.openEditNotebook(notebook)}"/>
                          </div>
                          <div>
                               <h:dataTable value="#{notebook.chapters}" var="chapter">
