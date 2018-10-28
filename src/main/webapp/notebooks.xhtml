@@ -6,27 +6,33 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<f:view>
-     <h:outputLabel value="Notebooks"/>
-     <h:commandButton value="Create" type="button" onclick="PF('dlg2').show();"/>
-     <h:form>
-          <h:dataTable> <!--Go trough each notebook-->
-               <h:column>
-                    <div>
-                         <h:outputLabel/> <!--Write each notebook title-->
-                         <h:commandButton value="Edit"/>
-                    </div>
-                    <div>
-                         <ul>
-                              <li><h:outputLabel/> <!--Write each chater--></li>
-                         </ul>
-                    </div>
-               </h:column>
-          </h:dataTable>
+     <h:body>
+          <h:form>
+          <h:outputLabel value="Notebooks"/>
+               <h:commandButton class="createButton" value="Create" />
+               <div class="createBlock">
+                    <h:inputText value="#{notebookBean.createNotebookName}"/>
+                    <h:commandButton action="#{notebookBean.createNotebook()}"/>
+               </div>
+               <h:dataTable value="#{notebookBean.notebooks}" var="notebook"> <!--Go trough each notebook-->
+                    <h:column>
+                         <div>
+                              <h:outputLabel value="#{notebook.name}" var="name"/> <!--Write each notebook title-->
+                              <h:commandButton class="editButton" value="Edit" />
+                              <div class="editBlock">
+                                   <h:inputText var="noteBookName"/>
+                                   <h:commandButton action="#{notebookBean.updateNotebook()}"/>
+                                   <h:commandButton action="#{notebookBean.deleteNotebook()}"/>
+                              </div>
+                         </div>
+                         <div>
+                              <h:dataTable value="#{notebook.chapters}" var="chapter">
+                                   <h:outputLabel value="#{chapter.name}"/> <!--Write each chater-->
+                              </h:dataTable>
+                         </div>
+                    </h:column>
+               </h:dataTable>
+          </h:form>
+     </h:body>
 
-          <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-               <h:outputText value="This is a Modal Dialog." />
-          </p:dialog>
-     </h:form>
-</f:view>
 </html>
