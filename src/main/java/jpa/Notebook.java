@@ -5,7 +5,7 @@ import java.util.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name="GetAllNotebooks", query="SELECT n FROM Notebook n")
+        @NamedQuery(name="GetAllNotebooks", query="SELECT n FROM Notebook n ORDER BY n.name")
 })
 public class Notebook {
     @Id
