@@ -22,8 +22,15 @@
                          </div>
                          <div>
                               <h:dataTable value="#{notebook.chapters}" var="chapter">
-                                   <h:outputLabel value="#{chapter.name}"/> <!--Write each chater-->
+                                   <h:column>
+                                        <h:outputLabel value="#{chapter.name}"/> <!--Write each chater-->
+                                   </h:column>
                               </h:dataTable>
+                         </div>
+                         <h:commandButton class="createButton" value="Add a new chapter" />
+                         <div class="createBlock">
+                              <h:inputText value="#{notebookBean.createChapterName}"/>
+                              <h:commandButton action="#{notebookBean.createChapter(notebook)}" value="Save"/>
                          </div>
                     </h:column>
                </h:dataTable>

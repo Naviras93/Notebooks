@@ -45,4 +45,6 @@ public class Notebook {
     public void setChapters(List<Chapter> chapters) {
         this.chapters = chapters;
     }
+
+    public void setChapter(Chapter chapter) { this.chapters.add(chapter); }
 }

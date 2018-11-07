@@ -1,6 +1,7 @@
 package jsf;
 
 
+import ejb.ChapterService;
 import ejb.NotebookService;
 import jpa.Chapter;
 import jpa.Notebook;
@@ -14,6 +15,7 @@ import java.util.List;
 @SessionScoped
 public class NotebookBean {
     private String createNotebookName;
+    private String createChapterName;
     private String editNotebookName;
     private List<Notebook> notebooks;
     private List<Chapter> chapters;
@@ -21,11 +23,21 @@ public class NotebookBean {
 
     @EJB
     NotebookService notebookService;
+    @EJB
+    ChapterService chapterService;
 
     public void createNotebook(){
         Notebook nb = new Notebook();
         nb.setName(createNotebookName);
         notebookService.createNotebook(nb);
+    }
+
+
+    public void createChapter(Notebook notebook) {
+        Chapter c = new Chapter();
+        c.setName("Chapter " + (notebook.getChapters().size()+1));
+        c.setNotebook(notebook);
+        chapterService.createChapter(c);
     }
 
     public String openEditNotebook(Notebook notebook){
@@ -74,4 +86,13 @@ public class NotebookBean {
     public void setSelectedNotebook(Notebook selectedNotebook) {
         this.selectedNotebook = selectedNotebook;
     }
+
+    public String getCreateChapterName() {
+        return createChapterName;
+    }
+
+    public void setCreateChapterName(String createChapterName) {
+        this.createChapterName = createChapterName;
+    }
+
 }
